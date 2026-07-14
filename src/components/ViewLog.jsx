@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import NavigationBar from "./NavigationBar";
 
 const ViewLog = () => {
   const [data, changeData] = useState([]);
@@ -23,8 +24,9 @@ const ViewLog = () => {
   return (
     <div className="container mt-4">
       <div className="row">
+        <NavigationBar/>
         <div className="col-12">
-          <h2 className="text-center mb-4">View Log Details</h2>
+          <h3 className="text-center mb-4">View Log Details</h3>
 
           <table className="table table-bordered table-striped table-hover">
             <thead className="table-dark">
