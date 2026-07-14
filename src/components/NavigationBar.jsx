@@ -7,7 +7,7 @@ const NavigationBar = () => {
 
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><img src="https://www.shutterstock.com/image-vector/computer-lab-icon-solid-black-260nw-2766272631.jpg" style={{ width: '65px', height: '65px' }} alt="Logo" /></a>
+                    <a className="navbar-brand" href="#"><img src="#" style={{ width: '65px', height: '65px' }} alt="Logo" /></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
