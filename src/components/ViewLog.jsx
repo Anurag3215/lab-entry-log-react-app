@@ -1,71 +1,80 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const ViewLog = () => {
+  const [data, changeData] = useState([]);
 
-    const [data, changeData] = useState([])
+  const fetchData = () => {
+    axios
+      .get("http://localhost:9000/view-Lab")
+      .then((response) => {
+        console.log(response.data);
+        changeData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const fetchData = () => {
-        axios.get("http://localhost:9000/view-Lab").then(
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-            (response) => {
-                changeData(response.data)
-            }
+  return (
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-12">
+          <h2 className="text-center mb-4">View Log Details</h2>
 
-        ).catch()
-    }
+          <table className="table table-bordered table-striped table-hover">
+            <thead className="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Course</th>
+                <th>System No</th>
+                <th>Login Time</th>
+                <th>Logout Time</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-    useEffect(
-        () => {
-            fetchData()
-        }, []
-    )
-
-    return (
-        <div>
-
-            <div className="container">
-                <div className="row">
-                    <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-
-                        <div className="row g-3">
-                            {
-                                data.map
-                                    (
-                                        (value, index) => {
-                                            return (
-                                                <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-
-                                                    <div className="card">
-
-                                                        <div className="card-body">
-                                                            <h5 className="card-title">Details: </h5>
-                                                            <p><b>Name: </b>{value.name}</p>
-                                                            <p><b>Department: </b>{value.dept}</p>
-                                                            <p><b>Semester: </b>{value.sem}</p>
-                                                            <p><b>Course: </b>{value.course}</p>
-                                                            <p><b>System No: </b>{value.sysNo}</p>
-                                                            <p><b>Login Time: </b>{value.loginTime}</p>
-                                                            <p><b>Logout Time: </b>{value.logoutTime}</p>
-                                                            <p><b>Date: </b>{value.date}</p>
-                                                            <a href="#" className="btn btn-success">View</a>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            )
-                                        }
-                                    )
-                            }
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+            <tbody>
+              {data.length > 0 ? (
+                data.map((value, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{value.name}</td>
+                    <td>{value.dept}</td>
+                    <td>{value.sem}</td>
+                    <td>{value.course}</td>
+                    <td>{value.systemNo}</td>
+                    <td>{value.logintime}</td>
+                    <td>{value.logoutTime}</td>
+                    <td>{value.date}</td>
+                    <td>
+                      <button className="btn btn-success btn-sm">
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="10" className="text-center">
+                    No Data Found
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ViewLog
+export default ViewLog;
