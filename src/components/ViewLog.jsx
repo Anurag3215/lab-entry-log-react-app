@@ -40,7 +40,6 @@ const ViewLog = () => {
                 <th>Login Time</th>
                 <th>Logout Time</th>
                 <th>Date</th>
-                <th>Action</th>
               </tr>
             </thead>
 
