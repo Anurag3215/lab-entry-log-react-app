@@ -56,11 +56,6 @@ const ViewLog = () => {
                     <td>{value.logintime}</td>
                     <td>{value.logoutTime}</td>
                     <td>{value.date}</td>
-                    <td>
-                      <button className="btn btn-success btn-sm">
-                        View
-                      </button>
-                    </td>
                   </tr>
                 ))
               ) : (
